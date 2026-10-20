@@ -1,0 +1,110 @@
+@import "tailwindcss";
+
+/* Brand palette: Old Money — espresso, ivory, burgundy, olive */
+@theme {
+  --color-ink: #140f0d;
+  --color-ink-2: #1d1613;
+  --color-ink-3: #2a201b;
+  --color-ivory: #ede4d8;
+  --color-ivory-dim: #b3a595;
+  --color-bordo: #7c2230;
+  --color-bordo-soft: #c46a76;
+  --color-olive: #7e7a47;
+  --color-olive-soft: #b4ae72;
+
+  /* tokens Magic UI components read */
+  --color-background: #1d1613;
+  --color-foreground: #ede4d8;
+  --color-border: rgba(237, 228, 216, 0.12);
+  --color-muted-foreground: #b3a595;
+
+  --font-display: "Cormorant", "Cormorant Garamond", Georgia, serif;
+  --font-sans: "Onest", "Segoe UI", system-ui, sans-serif;
+
+  /* Magic UI animations (from the official registry) */
+  --animate-marquee: marquee var(--duration) infinite linear;
+  --animate-marquee-vertical: marquee-vertical var(--duration) linear infinite;
+  --animate-shimmer-slide: shimmer-slide var(--speed) ease-in-out infinite alternate;
+  --animate-spin-around: spin-around calc(var(--speed) * 2) infinite linear;
+  --animate-ripple: ripple var(--duration, 2s) ease calc(var(--i, 0) * 0.2s) infinite;
+  --animate-shiny-text: shiny-text 8s infinite;
+  --animate-aurora: aurora 8s ease-in-out infinite alternate;
+
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(calc(-100% - var(--gap))); }
+  }
+  @keyframes marquee-vertical {
+    from { transform: translateY(0); }
+    to { transform: translateY(calc(-100% - var(--gap))); }
+  }
+  @keyframes shimmer-slide {
+    to { transform: translate(calc(100cqw - 100%), 0); }
+  }
+  @keyframes spin-around {
+    0% { transform: translateZ(0) rotate(0); }
+    15%, 35% { transform: translateZ(0) rotate(90deg); }
+    65%, 85% { transform: translateZ(0) rotate(270deg); }
+    100% { transform: translateZ(0) rotate(360deg); }
+  }
+  @keyframes ripple {
+    0%, 100% { transform: translate(-50%, -50%) scale(1); }
+    50% { transform: translate(-50%, -50%) scale(0.9); }
+  }
+  @keyframes shiny-text {
+    0%, 90%, 100% { background-position: calc(-100% - var(--shiny-width)) 0; }
+    30%, 60% { background-position: calc(100% + var(--shiny-width)) 0; }
+  }
+  @keyframes aurora {
+    0% { background-position: 0% 50%; transform: rotate(-5deg) scale(0.9); }
+    25% { background-position: 50% 100%; transform: rotate(5deg) scale(1.1); }
+    50% { background-position: 100% 50%; transform: rotate(-3deg) scale(0.95); }
+    75% { background-position: 50% 0%; transform: rotate(3deg) scale(1.05); }
+    100% { background-position: 0% 50%; transform: rotate(-5deg) scale(0.9); }
+  }
+}
+
+:root { color-scheme: dark; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--color-ink);
+  color: var(--color-ivory);
+  font-family: var(--font-sans);
+  font-weight: 300;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+h1, h2, h3 { font-family: var(--font-display); font-weight: 500; line-height: 1.04; letter-spacing: -0.01em; text-wrap: balance; }
+em { font-style: italic; color: var(--color-bordo-soft); }
+:focus-visible { outline: 1.5px solid var(--color-bordo-soft); outline-offset: 3px; border-radius: 8px; }
+
+.wrap {
+  max-width: 1280px;
+  margin-inline: auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+@media (min-width: 768px) {
+  .wrap { padding-left: 48px; padding-right: 48px; }
+}
+.eyebrow {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--color-ivory-dim); font-weight: 500;
+}
+.eyebrow::before { content: ""; width: 14px; height: 1px; background: var(--color-olive-soft); }
+.grain {
+  position: fixed; inset: 0; pointer-events: none; z-index: 60; opacity: 0.05;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+.ph {
+  display: inline-block; font-family: var(--font-sans); font-size: 0.6em; font-style: normal;
+  color: var(--color-olive-soft); border: 1px dashed rgba(180, 174, 114, 0.55);
+  border-radius: 8px; padding: 0.15em 0.55em; vertical-align: middle;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+  html { scroll-behavior: auto; }
+}
