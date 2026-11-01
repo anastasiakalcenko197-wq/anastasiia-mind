@@ -1,0 +1,35 @@
+# Downloads the scene videos listed in media.txt and cuts them into scroll frames for docs/
+name: Scene frames
+on:
+  push:
+    paths: [media.txt, .github/workflows/media.yml]
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  frames:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg
+      - name: Cut frames
+        run: |
+          set -e
+          grep -v '^#' media.txt | while read id video still; do
+            [ -z "$id" ] && continue
+            out=docs/media/$id; rm -rf "$out"; mkdir -p "$out"
+            curl -fsSL "$video" -o /tmp/$id.mp4
+            curl -fsSL "$still" -o "$out/still.webp" || true
+            dur=$(ffprobe -v error -show_entries format=duration -of csv=p=0 /tmp/$id.mp4)
+            fps=$(python3 -c "print(60/float('$dur'))")
+            ffmpeg -v error -i /tmp/$id.mp4 -an -vf "fps=$fps,scale=1280:-2" -frames:v 60 -q:v 5 "$out/%03d.jpg"
+            ffmpeg -v error -i /tmp/$id.mp4 -an -c:v libx264 -crf 26 -preset slow -movflags +faststart -vf "scale=1280:-2" "$out/clip.mp4"
+            ls "$out" | wc -l
+          done
+      - name: Commit
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898283+github-actions[bot]@users.noreply.github.com"
+          git add docs/media
+          git diff --cached --quiet || git commit -m "Кадри сцен для сайту курсів"
+          git push
