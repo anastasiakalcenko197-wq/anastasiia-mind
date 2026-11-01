@@ -50,6 +50,14 @@ npm run build    # готовий статичний сайт з'явиться 
 
 Папку `out/` можна викласти на будь-який хостинг: Netlify, Cloudflare Pages чи GitHub Pages.
 
+## Портфоліо курсів (папка `docs/`)
+
+Окремий односторінковий сайт з 4 курсами: `docs/index.html`, а поруч документи `privacy.html`, `terms.html` і `refund.html`. Він не залежить від Next.js-сайту і нічого не потребує для збирання.
+
+Щоб він запрацював в інтернеті безкоштовно: **Settings → Pages → Source: Deploy from a branch → Branch: `main`, папка `/docs` → Save**. Через 1–2 хвилини сайт буде за адресою `https://anastasiakalcenko197-wq.github.io/anastasiia-mind/`, а кожен курс за посиланням `…/#course-1` … `#course-4`.
+
+Meta Pixel вмикається, якщо вписати ID у рядок `window.PIXEL_ID=""` у `docs/index.html`, і завантажується лише після згоди людини на cookies.
+
 ---
 
 **EN:** Next.js 15 static site built with original Magic UI components. Edit copy, links and prices in `src/content.ts`. To deploy, push this folder to GitHub and import it in Vercel (no configuration needed). `npm run build` writes a static site to `out/`.
