@@ -338,7 +338,7 @@ var host=document.getElementById("scenes");
 host.innerHTML=COURSES.map(function(c){
   var ws=[];c.name.split(" ").forEach(function(w,i,arr){if(ws.length&&ws[ws.length-1].length<=2)ws[ws.length-1]+=" "+w;else ws.push(w)});var words=ws.map(function(w){return '<span class="w"><span>'+esc(w)+'</span></span>'}).join("");
   return '<section class="scene s'+c.id+'" id="c'+c.id+'"><div class="stick"><div class="bg"><canvas></canvas></div><div class="shade"></div>'+
-   '<div class="copy"><div class="num">0'+c.id+'</div><span class="lbl" style="color:var(--acc)">Крок '+c.id+' з 4</span><h2>'+words+'</h2><p class="tag">'+esc(c.tag)+'</p>'+
+   '<div class="copy"><div class="num">0'+c.id+'</div><span class="lbl" style="color:var(--acc)">Крок '+c.id+' / 4</span><h2>'+words+'</h2><p class="tag">'+esc(c.tag)+'</p>'+
    '<div class="pcard"><div class="row">'+c.pts.map(function(p){return '<span class="chip">'+esc(p)+'</span>'}).join("")+(c.bonus?'<span class="chip" style="border-color:var(--acc);color:var(--acc)">'+esc(c.bonus)+'</span>':"")+'</div>'+
    '<div class="buy">'+'<div class="price"><small>Ціна</small>'+esc(c.price||"скоро")+'</div><a class="btn" href="'+BUY+c.id+'" target="_blank" rel="noopener">Купити →</a><a class="btn ghost" href="#course-'+c.id+'">Детальніше</a></div></div></div>'+
    '<div class="prog">0'+c.id+'<b><i></i></b>04</div></div></section>'}).join("");
@@ -387,7 +387,7 @@ function openCourse(id){var c=COURSES[id-1],d=DETAILS[id];if(!c||!d)return;
   var ws=c.name.split(" ").reduce(function(a,w){if(a.length&&a[a.length-1].length<=2)a[a.length-1]+=" "+w;else a.push(w);return a},[]);
   dt.className="dt on s"+id;lastY=dt.classList.contains("on")?lastY:scrollY;
   dt.innerHTML='<button class="x" type="button" aria-label="Закрити">✕</button>'+
-   '<div class="dhero"><canvas></canvas><div class="shade"></div><div class="copy"><div class="num">0'+id+'</div><span class="lbl" style="color:var(--acc)">Курс '+id+' з 4</span><h2>'+ws.map(esc).join("<br>")+'</h2><p class="tag in">'+esc(c.tag)+'</p></div></div>'+
+   '<div class="dhero"><canvas></canvas><div class="shade"></div><div class="copy"><div class="num">0'+id+'</div><span class="lbl" style="color:var(--acc)">Курс '+id+' / 4</span><h2>'+ws.map(esc).join("<br>")+'</h2><p class="tag in">'+esc(c.tag)+'</p></div></div>'+
    '<div class="dbody"><p class="dlead">'+esc(d.lead)+'</p>'+
    '<div class="fmt">'+d.format.map(function(f){return '<div><b>'+esc(f[0])+'</b><span>'+esc(f[1])+'</span></div>'}).join("")+'</div>'+
    '<div class="dsec"><span class="lbl" style="color:var(--acc)">Для кого</span><h3>Цей курс для вас, <em>якщо…</em></h3><ul class="dl">'+d.who.map(function(x){return '<li>'+esc(x)+'</li>'}).join("")+'</ul></div>'+
