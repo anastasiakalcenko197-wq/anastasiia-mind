@@ -14,18 +14,19 @@ jobs:
       - run: sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg
       - name: Cut frames
         run: |
-          set -e
-          grep -v '^#' media.txt | while read id video still; do
+          set -ex
+          grep -v '^#' media.txt > /tmp/list.txt
+          while read -r id video still; do
             [ -z "$id" ] && continue
             out=docs/media/$id; rm -rf "$out"; mkdir -p "$out"
-            curl -fsSL "$video" -o /tmp/$id.mp4
-            curl -fsSL "$still" -o "$out/still.webp" || true
-            dur=$(ffprobe -v error -show_entries format=duration -of csv=p=0 /tmp/$id.mp4)
+            curl -fSL --retry 3 -A "Mozilla/5.0" "$video" -o "/tmp/v$id.mp4"
+            curl -fSL --retry 3 -A "Mozilla/5.0" "$still" -o "$out/still.webp" || true
+            dur=$(ffprobe -v error -show_entries format=duration -of csv=p=0 "/tmp/v$id.mp4")
             fps=$(python3 -c "print(60/float('$dur'))")
-            ffmpeg -v error -i /tmp/$id.mp4 -an -vf "fps=$fps,scale=1280:-2" -frames:v 60 -q:v 5 "$out/%03d.jpg"
-            ffmpeg -v error -i /tmp/$id.mp4 -an -c:v libx264 -crf 26 -preset slow -movflags +faststart -vf "scale=1280:-2" "$out/clip.mp4"
+            ffmpeg -nostdin -v error -i "/tmp/v$id.mp4" -an -vf "fps=$fps,scale=1280:-2" -frames:v 60 -q:v 5 "$out/%03d.jpg"
+            ffmpeg -nostdin -v error -i "/tmp/v$id.mp4" -an -c:v libx264 -crf 26 -preset slow -movflags +faststart -vf "scale=1280:-2" "$out/clip.mp4"
             ls "$out" | wc -l
-          done
+          done < /tmp/list.txt
       - name: Commit
         run: |
           git config user.name "github-actions[bot]"
