@@ -551,8 +551,7 @@ ul.list li::before{content:"";flex:none;width:6px;height:6px;border-radius:50%;b
   });
   progress();
   (function(){var a=document.getElementById('diary-link');
-    if(location.protocol==='file:'){a.href='../02%20%D0%A2%D0%B8%D1%85%D0%BE%20%D0%B2%20%D0%B3%D0%BE%D0%BB%D0%BE%D0%B2%D1%96/%D0%A2%D0%B8%D1%85%D0%BE%20%D0%B2%20%D0%B3%D0%BE%D0%BB%D0%BE%D0%B2%D1%96%20%E2%80%94%20%D0%BA%D1%83%D1%80%D1%81%20(UA).html'}
-    else{a.href='https://claude.ai/artifact/HdfLtjGfcq8sdEGJjrT97k';a.target='_blank';a.rel='noopener'}})();
+    a.href='https://anastasiakalcenko197-wq.github.io/anastasiia-mind/#course-2';a.target='_blank';a.rel='noopener'})();
 })();
 
 /* book download */
@@ -565,7 +564,7 @@ ul.list li::before{content:"";flex:none;width:6px;height:6px;border-radius:50%;b
   sync();new MutationObserver(sync).observe(document.body,{attributes:true,attributeFilter:['data-lang']});
   function getDl(){try{return (window.claude&&window.claude.use)?window.claude.use('downloads'):Promise.resolve(null)}catch(e){return Promise.resolve(null)}}
   btn.addEventListener('click',function(e){
-    if(location.protocol==='file:')return; /* on the laptop the plain link downloads the PDF */
+    if(!(window.claude&&window.claude.use))return; /* on the site and on the laptop the plain link downloads the PDF */
     e.preventDefault();msg.textContent=lang()==='en'?'Preparing the file…':'Готую файл…';
     var dl;
     getDl().then(function(d){if(!d)throw {code:'unavailable'};dl=d;return fetch(file())}).then(function(r){if(!r.ok)throw 0;return r.blob()})
@@ -627,7 +626,7 @@ window.FX={hero:[".epi","header.hero .eyebrow","header.hero h1","header.hero .le
 })();
 
 </script>
-<script>(function(){if(location.protocol==='file:')return;['book-read','gift-strip'].forEach(function(id){var a=document.getElementById(id);if(a)a.href='https://claude.ai/artifact/28p5jCAsZ1G3EoSFTT9bQa'})})();</script>
+<script>(function(){if(!/claude\.ai|claudeusercontent/.test(location.hostname))return;['book-read','gift-strip'].forEach(function(id){var a=document.getElementById(id);if(a)a.href='https://claude.ai/artifact/28p5jCAsZ1G3EoSFTT9bQa'})})();</script>
 
 <!-- ===== Вступний екран «Подарунок» ===== -->
 <style>
