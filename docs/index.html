@@ -117,18 +117,25 @@ a{color:inherit}
 @media(max-width:820px){.ladder{grid-template-columns:1fr 1fr}}
 footer{padding:40px max(22px,6vw) 60px;border-top:1px solid #2A201A;color:#8F7E70;font-size:13.5px;display:grid;gap:10px}
 @media (prefers-reduced-motion:reduce){.scene{height:auto}.stick{position:relative;height:100svh}}
+.free .frc{display:grid;gap:22px;margin-top:22px;padding:24px;border-radius:24px;border:1px solid rgba(201,162,122,.28);background:linear-gradient(140deg,rgba(201,162,122,.12),rgba(255,255,255,.02))}
+.free .frlead{font-size:18px;line-height:1.6;margin:0}
+.free .frl{margin:14px 0 0;padding:0;list-style:none;display:flex;flex-wrap:wrap;gap:8px}.free .frl li{font-size:14px;padding:7px 13px;border-radius:999px;border:1px solid rgba(201,162,122,.35)}
+.free .frhow{margin:14px 0 0;font-size:15px;opacity:.8}
+.free .tg{justify-self:start;display:inline-flex;align-items:center;gap:10px;padding:15px 24px;border-radius:999px;background:#229ED9;color:#fff;font-weight:600;font-size:16px;text-decoration:none;box-shadow:0 12px 28px -12px rgba(34,158,217,.7);transition:transform .2s,background .2s}
+.free .tg:hover{background:#1C8BC0;transform:translateY(-2px)}.free .tg svg{width:22px;height:22px}
+@media (min-width:860px){.free .frc{grid-template-columns:1fr auto;align-items:center;padding:32px 36px}}
 </style>
 </head>
 <body>
-<header class="top"><a class="brand" href="#top">Anastasiia</a><nav class="dots" id="dots"><a href="#c1" aria-label="Курс 1"></a><a href="#c2" aria-label="Курс 2"></a><a href="#c3" aria-label="Курс 3"></a><a href="#c4" aria-label="Курс 4"></a></nav></header>
+<header class="top"><a class="brand" href="#top">Anastasiia</a><nav class="dots" id="dots"><a href="#c2" aria-label="Курс 1"></a><a href="#c3" aria-label="Курс 2"></a><a href="#c4" aria-label="Курс 3"></a></nav></header>
 
 <section class="hero" id="top">
   <div class="glow" aria-hidden="true"></div>
   <div class="hin">
     <blockquote class="quote">«Цікавий парадокс: коли я приймаю себе таким, яким я є, тоді я можу змінитися».<cite>— Карл Роджерс</cite></blockquote>
-    <h1><span class="ln"><span>Чотири кроки</span></span><span class="ln"><span>до <em>себе</em></span></span></h1>
-    <p>Якщо ви тут, значить, щось усередині просить уваги: тривога, сумніви чи втома. Це вже перший крок, і він важливіший, ніж здається. Тут чотири короткі курси, кожен про один крок до спокою і сили. Оберіть свій.</p>
-    <div class="hbtn"><a class="btn" href="#c1" style="--btn:#C9A27A;--btx:#22140C">Подивитися курси ↓</a><a class="btn ghost" href="#quiz" style="--tx:#F6F0E6">Допоможіть обрати</a></div>
+    <h1><span class="ln"><span>Три кроки</span></span><span class="ln"><span>до <em>себе</em></span></span></h1>
+    <p>Якщо ви тут, значить, щось усередині просить уваги: тривога, сумніви чи втома. Це вже перший крок, і він важливіший, ніж здається. Тут три курси, кожен про один крок до спокою і сили. Оберіть свій. А почати можна з безкоштовного міні-курсу внизу сторінки.</p>
+    <div class="hbtn"><a class="btn" href="#c2" style="--btn:#C9A27A;--btx:#22140C">Подивитися курси ↓</a><a class="btn ghost" href="#quiz" style="--tx:#F6F0E6">Допоможіть обрати</a></div>
   </div>
   <div class="scroll-cue">Гортайте<i></i></div>
 </section>
@@ -159,6 +166,18 @@ footer{padding:40px max(22px,6vw) 60px;border-top:1px solid #2A201A;color:#8F7E7
   <div><span class="lbl" style="color:var(--gold)">Про мене</span><h2 class="h2">Анастасія, <em>психологиня і тренерка</em></h2>
   <p>Психологічний факультет Херсонського державного університету. Сертифікати з НЛП, позитивної психології, гештальт-терапії та психології підсвідомого, зараз проходжу професійну перепідготовку в школі «Експерт». Працюю онлайн українською та російською.</p>
   <p>Мій підхід м'який і підтримувальний: поєдную психологію і тіло (mind &amp; body), бо спокій живе не лише в голові.</p><p class="note">«Я створила ці курси для тих, кому зараз важко дійти до психолога, але хочеться почати вже сьогодні. Кожен урок я писала так, ніби ми сидимо поруч. Ви не самі, і з вами все гаразд».</p><div class="sig">Анастасія</div></div>
+</div></section>
+<section class="sec free" id="free"><div class="in2">
+  <span class="lbl" style="color:var(--gold)">Подарунок · безкоштовно</span>
+  <h2 class="h2">Почніть із <em>«Тиші всередині»</em></h2>
+  <div class="frc">
+    <div class="frt">
+      <p class="frlead">Перша допомога, коли накриває тривога чи паніка. Три короткі уроки, дихальна вправа з таймером, заземлення 5-4-3-2-1 і слово від мене наприкінці.</p>
+      <ul class="frl"><li>3 уроки по ~10 хвилин</li><li>Працює з телефона, у вашому темпі</li><li>Без оплати і без зобов’язань</li></ul>
+      <p class="frhow">Курс надішле моя помічниця Ксенія в Telegram: натисніть кнопку, відповідайте на її запитання — і за хвилину курс буде у вас.</p>
+    </div>
+    <a class="tg" href="https://t.me/ksenia_anastasiia_bot?start=site_free" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M21.9 4.3 18.7 19.4c-.2 1.1-.9 1.4-1.8.9l-4.9-3.6-2.4 2.3c-.3.3-.5.5-1 .5l.4-5 9.1-8.2c.4-.4-.1-.6-.6-.2L6.2 13.2l-4.8-1.5c-1-.3-1.1-1 .2-1.5l18.9-7.3c.9-.3 1.6.2 1.4 1.4z"/></svg><span>Отримати курс у Telegram</span></a>
+  </div>
 </div></section>
 <section class="end">
   <span class="lbl" style="color:var(--gold)">Шлях</span>
@@ -336,18 +355,19 @@ COURSES.forEach(function(c){c.dir=c.dir||c.video.replace(/\.mp4$/,"")});
 
 /* ---------- scenes ---------- */
 var host=document.getElementById("scenes");
-host.innerHTML=COURSES.map(function(c){
+var PAID=COURSES.filter(function(c){return !c.free});
+host.innerHTML=PAID.map(function(c,k){
   var ws=[];c.name.split(" ").forEach(function(w,i,arr){if(ws.length&&ws[ws.length-1].length<=2)ws[ws.length-1]+=" "+w;else ws.push(w)});var words=ws.map(function(w){return '<span class="w"><span>'+esc(w)+'</span></span>'}).join("");
   return '<section class="scene s'+c.id+'" id="c'+c.id+'"><div class="stick"><div class="bg"><canvas></canvas></div><div class="shade"></div>'+
-   '<div class="copy"><div class="num">0'+c.id+'</div><span class="lbl" style="color:var(--acc)">Крок '+c.id+' / 4</span><h2>'+words+'</h2><p class="tag">'+esc(c.tag)+'</p>'+
+   '<div class="copy"><div class="num">0'+(k+1)+'</div><span class="lbl" style="color:var(--acc)">Курс '+(k+1)+' / '+PAID.length+'</span><h2>'+words+'</h2><p class="tag">'+esc(c.tag)+'</p>'+
    '<div class="pcard"><div class="row">'+c.pts.map(function(p){return '<span class="chip">'+esc(p)+'</span>'}).join("")+(c.bonus?'<span class="chip" style="border-color:var(--acc);color:var(--acc)">'+esc(c.bonus)+'</span>':"")+'</div>'+
    '<div class="buy">'+'<div class="price"><small>Ціна</small>'+esc(c.price||"скоро")+'</div><a class="btn" href="'+(c.free?FREE:BUY+c.id)+'" target="_blank" rel="noopener">'+(c.free?"Отримати безкоштовно →":"Купити →")+'</a><a class="btn ghost" href="#course-'+c.id+'">Детальніше</a></div></div></div>'+
-   '<div class="prog">0'+c.id+'<b><i></i></b>04</div></div></section>'}).join("");
+   '<div class="prog">0'+(k+1)+'<b><i></i></b>0'+PAID.length+'</div></div></section>'}).join("");
 document.getElementById("ladder").innerHTML=COURSES.map(function(c){return '<a href="#course-'+c.id+'"><b>0'+c.id+'</b><span>'+esc(c.name)+'</span><small>'+(c.price||"Ціна скоро")+'</small></a>'}).join("");
 
 var scenes=[].slice.call(document.querySelectorAll(".scene")).map(function(el,k){
-  var c=COURSES[k],cv=el.querySelector("canvas"),fr=[],s={el:el,cv:cv,ctx:cv.getContext("2d"),fr:fr,t:0,c:c,frames:false,
-    words:[].slice.call(el.querySelectorAll("h2 .w")),tag:el.querySelector(".tag"),card:el.querySelector(".pcard"),copy:el.querySelector(".copy"),bar:el.querySelector(".prog i"),draw:SCENES[k]};
+  var c=PAID[k],cv=el.querySelector("canvas"),fr=[],s={el:el,cv:cv,ctx:cv.getContext("2d"),fr:fr,t:0,c:c,frames:false,
+    words:[].slice.call(el.querySelectorAll("h2 .w")),tag:el.querySelector(".tag"),card:el.querySelector(".pcard"),copy:el.querySelector(".copy"),bar:el.querySelector(".prog i"),draw:SCENES[c.id-1]};
   /* real video frames replace the drawn scene as soon as the first one loads */
   var probe=new Image();probe.onload=function(){s.frames=true;fr[0]=probe};probe.src=c.dir+"/001.jpg";
   s.loadAll=function(){if(s.all||!s.frames)return;s.all=1;for(var i=1;i<N;i++){var im=new Image();im.decoding="async";im.src=c.dir+"/"+pad(i+1)+".jpg";fr[i]=im}};
@@ -388,7 +408,7 @@ function openCourse(id){var c=COURSES[id-1],d=DETAILS[id];if(!c||!d)return;
   var ws=c.name.split(" ").reduce(function(a,w){if(a.length&&a[a.length-1].length<=2)a[a.length-1]+=" "+w;else a.push(w);return a},[]);
   dt.className="dt on s"+id;lastY=dt.classList.contains("on")?lastY:scrollY;
   dt.innerHTML='<button class="x" type="button" aria-label="Закрити">✕</button>'+
-   '<div class="dhero"><canvas></canvas><div class="shade"></div><div class="copy"><div class="num">0'+id+'</div><span class="lbl" style="color:var(--acc)">Курс '+id+' / 4</span><h2>'+ws.map(esc).join("<br>")+'</h2><p class="tag in">'+esc(c.tag)+'</p></div></div>'+
+   '<div class="dhero"><canvas></canvas><div class="shade"></div><div class="copy"><div class="num">0'+id+'</div><span class="lbl" style="color:var(--acc)">'+(c.free?"Безкоштовний міні-курс":"Платний курс")+'</span><h2>'+ws.map(esc).join("<br>")+'</h2><p class="tag in">'+esc(c.tag)+'</p></div></div>'+
    '<div class="dbody"><p class="dlead">'+esc(d.lead)+'</p>'+
    '<div class="fmt">'+d.format.map(function(f){return '<div><b>'+esc(f[0])+'</b><span>'+esc(f[1])+'</span></div>'}).join("")+'</div>'+
    '<div class="dsec"><span class="lbl" style="color:var(--acc)">Для кого</span><h3>Цей курс для вас, <em>якщо…</em></h3><ul class="dl">'+d.who.map(function(x){return '<li>'+esc(x)+'</li>'}).join("")+'</ul></div>'+
@@ -419,7 +439,7 @@ var Q=[["Мене накриває тривога чи паніка, і треб
 var qz=document.getElementById("qz"),qa=document.getElementById("qa");
 qz.innerHTML=Q.map(function(q,i){return '<button type="button" data-i="'+i+'">'+esc(q[0])+'</button>'}).join("");
 qz.addEventListener("click",function(e){var b=e.target.closest("button");if(!b)return;[].forEach.call(qz.children,function(x){x.classList.toggle("on",x===b)});var c=COURSES[Q[+b.dataset.i][1]-1];
-  qa.innerHTML='Вам підійде курс <b>0'+c.id+' «'+esc(c.name)+'»</b>. '+esc(c.tag)+'. <a href="#course-'+c.id+'">Детальніше про курс →</a>';if(window.gsap&&!still)gsap.from(qa,{y:12,opacity:0,duration:.6})});
+  qa.innerHTML=c.free?'Почніть із безкоштовного міні-курсу <b>«'+esc(c.name)+'»</b>. '+esc(c.tag)+'. <a href="#free">Отримати безкоштовно →</a>':'Вам підійде курс <b>«'+esc(c.name)+'»</b>. '+esc(c.tag)+'. <a href="#course-'+c.id+'">Детальніше про курс →</a>';if(window.gsap&&!still)gsap.from(qa,{y:12,opacity:0,duration:.6})});
 
 /* ---------- hero + section reveals ---------- */
 function go(){if(still)return;
