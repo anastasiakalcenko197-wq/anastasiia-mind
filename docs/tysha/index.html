@@ -615,4 +615,52 @@ window.FX={hero:[".epi","header.hero .eyebrow","header.hero h1","header.hero .le
 })();
 
 </script>
-<script>(function(){var a=document.getElementById('book-read');if(a&&location.protocol!=='file:')a.href='https://claude.ai/artifact/28p5jCAsZ1G3EoSFTT9bQa'})();</script>
+<script>(function(){var a=document.getElementById('book-read');if(a&&/claude\.ai|claudeusercontent/.test(location.hostname))a.href='https://claude.ai/artifact/28p5jCAsZ1G3EoSFTT9bQa'})();</script>
+
+<!-- ===== Вступний екран «Подарунок» ===== -->
+<style>
+#gift{position:fixed;inset:0;z-index:99999;background:#F3EEE6;overflow:hidden;transition:opacity .7s ease,visibility .7s}
+#gift.out{opacity:0;visibility:hidden}
+#gift video,#gift .gimg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:72% 50%}
+#gift .gshade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(243,238,230,0) 30%,rgba(243,238,230,.82) 62%,#F3EEE6 88%)}
+#gift .gcopy{position:absolute;left:0;right:0;bottom:0;padding:0 24px max(40px,env(safe-area-inset-bottom));max-width:620px;margin:0 auto;text-align:center;color:#2B2420;font-family:Onest,system-ui,sans-serif}
+#gift .glbl{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:#56614A;opacity:0;transform:translateY(8px);transition:all .8s ease .2s}
+#gift h1{font-family:Cormorant,Georgia,serif;font-weight:500;font-size:clamp(40px,9vw,64px);line-height:1.02;margin:10px 0 12px;opacity:0;transform:translateY(10px);transition:all .9s ease .5s}
+#gift h1 em{color:#56614A}
+#gift p{font-size:16px;line-height:1.55;color:#6B6056;margin:0 auto 24px;max-width:430px;opacity:0;transform:translateY(10px);transition:all .9s ease .9s}
+#gift.in .glbl,#gift.in h1,#gift.in p{opacity:1;transform:none}
+#gift button{appearance:none;border:0;border-radius:999px;background:#56614A;color:#FBF8F3;font:500 16px/1 Onest,system-ui,sans-serif;padding:17px 30px;cursor:pointer;box-shadow:0 10px 30px rgba(86,97,74,.28);opacity:0;transform:translateY(12px);pointer-events:none;transition:opacity .8s ease,transform .8s ease,background .2s}
+#gift button:hover{background:#4a5440}
+#gift.ready button{opacity:1;transform:none;pointer-events:auto}
+#gift .gskip{display:block;margin:14px auto 0;background:none;border:0;color:#6B6056;font:13px Onest,system-ui,sans-serif;text-decoration:underline;cursor:pointer;opacity:.75}
+@media (min-width:900px){#gift video,#gift .gimg{object-position:50% 50%}#gift .gshade{background:linear-gradient(90deg,#F3EEE6 0%,rgba(243,238,230,.9) 30%,rgba(243,238,230,0) 58%)}#gift .gcopy{left:7vw;right:auto;bottom:auto;top:50%;transform:translateY(-50%);margin:0;padding:0;max-width:440px;text-align:left}#gift p{margin-left:0}#gift .gskip{margin-left:0}}
+</style>
+<div id="gift" role="dialog" aria-label="Подарунок: міні-курс «Тиша всередині»">
+  <img class="gimg" src="intro-first.jpg" alt="">
+  <video id="giftVid" muted playsinline preload="auto" poster="intro-first.jpg" aria-hidden="true"><source src="intro.mp4" type="video/mp4"></video>
+  <div class="gshade"></div>
+  <div class="gcopy">
+    <div class="glbl">🎁 Подарунок від Анастасії</div>
+    <h1>Тиша <em>всередині</em></h1>
+    <p>Навіть найсильніша хвиля минає. Подивіться, як вода заспокоюється, — і зробіть повільний видих разом із нею.</p>
+    <button type="button" id="giftOpen">Відкрити подарунок →</button>
+  </div>
+</div>
+<script>(function(){
+  var g=document.getElementById('gift'),v=document.getElementById('giftVid'),b=document.getElementById('giftOpen'),root=document.documentElement;
+  if(!g)return;
+  var prev=root.style.overflow;root.style.overflow='hidden';
+  var reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function ready(){g.classList.add('ready')}
+  requestAnimationFrame(function(){g.classList.add('in')});
+  if(reduce){v.style.display='none';g.querySelector('.gimg').src='intro-last.jpg';ready();}
+  else{
+    v.addEventListener('ended',ready);
+    var p=v.play();if(p&&p.catch)p.catch(function(){v.style.display='none';g.querySelector('.gimg').src='intro-last.jpg';ready()});
+    setTimeout(ready,4200);
+  }
+  b.addEventListener('click',function(){
+    g.classList.add('out');root.style.overflow=prev;window.scrollTo(0,0);
+    setTimeout(function(){g.remove()},800);
+  });
+})();</script>
