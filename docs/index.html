@@ -175,12 +175,13 @@ footer{padding:40px max(22px,6vw) 60px;border-top:1px solid #2A201A;color:#8F7E7
 
 <script>
 var COURSES=[
- {id:1,name:"Тиша всередині",tag:"Перша допомога, коли накриває тривога чи паніка",pts:["3 короткі уроки з вправами","Техніки, що працюють за хвилину","Книга «Хвиля минає» в подарунок"],price:"",bonus:"",video:"media/01.mp4",demo:"https://claude.ai/artifact/BQoXxd5ABFPTwX3zTCH74v"},
+ {id:1,name:"Тиша всередині",tag:"Перша допомога, коли накриває тривога чи паніка",pts:["3 короткі уроки з вправами","Техніки, що працюють за хвилину","Книга «Хвиля минає» в подарунок"],price:"Безкоштовно",free:true,bonus:"",video:"media/01.mp4",demo:"https://claude.ai/artifact/BQoXxd5ABFPTwX3zTCH74v"},
  {id:2,name:"Тихо в голові",tag:"21 день, щоб тривожні думки перестали керувати вами",pts:["Курс-щоденник на 21 день, по 10–15 хвилин","Методи КПТ простими словами","Тілесні хвилинки й онлайн-щоденник"],price:"",bonus:"",video:"media/02.mp4",demo:"https://claude.ai/artifact/HdfLtjGfcq8sdEGJjrT97k"},
  {id:3,name:"Сміливо бути собою",tag:"Курс впевненості для жінок, які втомилися сумніватися в собі",pts:["4 лекції і 14 днів практики","Шкала впевненості: день 1, 7 і 14","Робота з внутрішнім критиком"],price:"24,99 €",bonus:"+ Telegram-бот підтримки",video:"media/03.mp4",demo:"https://claude.ai/artifact/NRLAAu5gtjW7tJeEpY5CDZ"},
  {id:4,name:"Знову з силами",tag:"5 кроків, щоб вийти з вигорання і повернути енергію",pts:["5 кроків від виснаження до сил","Тіло, сон, межі, ресурси","Календар «30 днів» у подарунок"],price:"",bonus:"+ Telegram-бот підтримки",video:"media/04.mp4",demo:"https://claude.ai/artifact/XJX7KjWgmEy24fMPCEirGK"}
 ];
 var BUY="https://t.me/anastasiia_mind_bot?start=buy_";
+var FREE="https://t.me/ksenia_anastasiia_bot?start=site";
 </script>
 <script>/* hand-drawn stand-ins for the 4 videos: draw(ctx, W, H, t = scroll progress 0..1, s = seconds) */
 window.SCENES=(function(){
@@ -340,7 +341,7 @@ host.innerHTML=COURSES.map(function(c){
   return '<section class="scene s'+c.id+'" id="c'+c.id+'"><div class="stick"><div class="bg"><canvas></canvas></div><div class="shade"></div>'+
    '<div class="copy"><div class="num">0'+c.id+'</div><span class="lbl" style="color:var(--acc)">Крок '+c.id+' / 4</span><h2>'+words+'</h2><p class="tag">'+esc(c.tag)+'</p>'+
    '<div class="pcard"><div class="row">'+c.pts.map(function(p){return '<span class="chip">'+esc(p)+'</span>'}).join("")+(c.bonus?'<span class="chip" style="border-color:var(--acc);color:var(--acc)">'+esc(c.bonus)+'</span>':"")+'</div>'+
-   '<div class="buy">'+'<div class="price"><small>Ціна</small>'+esc(c.price||"скоро")+'</div><a class="btn" href="'+BUY+c.id+'" target="_blank" rel="noopener">Купити →</a><a class="btn ghost" href="#course-'+c.id+'">Детальніше</a></div></div></div>'+
+   '<div class="buy">'+'<div class="price"><small>Ціна</small>'+esc(c.price||"скоро")+'</div><a class="btn" href="'+(c.free?FREE:BUY+c.id)+'" target="_blank" rel="noopener">'+(c.free?"Отримати безкоштовно →":"Купити →")+'</a><a class="btn ghost" href="#course-'+c.id+'">Детальніше</a></div></div></div>'+
    '<div class="prog">0'+c.id+'<b><i></i></b>04</div></div></section>'}).join("");
 document.getElementById("ladder").innerHTML=COURSES.map(function(c){return '<a href="#course-'+c.id+'"><b>0'+c.id+'</b><span>'+esc(c.name)+'</span><small>'+(c.price||"Ціна скоро")+'</small></a>'}).join("");
 
@@ -393,7 +394,7 @@ function openCourse(id){var c=COURSES[id-1],d=DETAILS[id];if(!c||!d)return;
    '<div class="dsec"><span class="lbl" style="color:var(--acc)">Для кого</span><h3>Цей курс для вас, <em>якщо…</em></h3><ul class="dl">'+d.who.map(function(x){return '<li>'+esc(x)+'</li>'}).join("")+'</ul></div>'+
    '<div class="dsec"><span class="lbl" style="color:var(--acc)">Результат</span><h3>Що ви <em>заберете з собою</em></h3><ul class="dl">'+d.get.map(function(x){return '<li>'+esc(x)+'</li>'}).join("")+'</ul></div>'+
    '<div class="dsec"><span class="lbl" style="color:var(--acc)">Програма</span><h3>Крок за <em>кроком</em></h3><div class="pg">'+d.prog.map(function(p){return '<div><small>'+esc(p[0])+'</small><span><b>'+esc(p[1])+'</b><p>'+esc(p[2])+'</p></span></div>'}).join("")+'</div></div>'+
-   '<div class="dbuy"><div><span class="lbl" style="color:var(--acc)">Почати сьогодні</span><h3 style="margin-top:8px">'+esc(c.name)+'</h3>'+(c.bonus?'<span class="bonus">'+esc(c.bonus)+'</span>':"")+'</div><div class="buy"><div class="price"><small>Ціна</small>'+esc(c.price||"скоро")+'</div><a class="btn" href="'+BUY+id+'" target="_blank" rel="noopener">Купити курс →</a></div></div>'+
+   '<div class="dbuy"><div><span class="lbl" style="color:var(--acc)">Почати сьогодні</span><h3 style="margin-top:8px">'+esc(c.name)+'</h3>'+(c.bonus?'<span class="bonus">'+esc(c.bonus)+'</span>':"")+'</div><div class="buy"><div class="price"><small>Ціна</small>'+esc(c.price||"скоро")+'</div><a class="btn" href="'+(c.free?FREE:BUY+id)+'" target="_blank" rel="noopener">'+(c.free?"Отримати безкоштовно →":"Купити курс →")+'</a></div></div>'+
    '<div class="dsec dfaq"><span class="lbl" style="color:var(--acc)">Питання</span>'+d.faq.map(function(q){return '<details><summary>'+esc(q[0])+'</summary><p>'+esc(q[1])+'</p></details>'}).join("")+'</div>'+
    '<div class="dnext">'+(id>1?'<a class="btn ghost" href="#course-'+(id-1)+'">← '+esc(COURSES[id-2].name)+'</a>':'<span></span>')+(id<4?'<a class="btn ghost" href="#course-'+(id+1)+'">'+esc(COURSES[id].name)+' →</a>':'<a class="btn ghost" href="#quiz">Допоможіть обрати</a>')+'</div></div>';
   dt.scrollTop=0;document.body.style.overflow="hidden";
