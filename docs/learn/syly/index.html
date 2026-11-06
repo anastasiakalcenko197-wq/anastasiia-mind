@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="uk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<title>Знову з силами · курс Анастасії</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;1,500&family=Golos+Text:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#16110E;--cream:#F6F0E6;--soft:#D9CBBB;--gold:#C9A27A;--line:rgba(201,162,122,.35)}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{min-height:100%;background:var(--ink)}
+body{color:var(--cream);font:16px/1.6 "Golos Text","Segoe UI",system-ui,sans-serif;display:grid;place-items:center;min-height:100svh;padding:24px 16px;-webkit-font-smoothing:antialiased}
+.card{width:min(440px,100%);text-align:center;border:1px solid var(--line);border-radius:22px;padding:40px 26px 32px;background:radial-gradient(120% 80% at 50% 0%,rgba(201,162,122,.14),transparent 60%)}
+.lbl{font:600 11px/1 "Golos Text",sans-serif;letter-spacing:.26em;text-transform:uppercase;color:var(--gold)}
+h1{font:500 40px/1.05 "Cormorant Garamond",Georgia,serif;margin:16px 0 14px}
+p{color:var(--soft);font-size:15px}
+.st{display:none}.st.on{display:block}
+.dots{display:flex;gap:8px;justify-content:center;margin:22px 0 4px}
+.dots i{width:8px;height:8px;border-radius:50%;background:var(--gold);opacity:.3;animation:b 1.2s infinite}
+.dots i:nth-child(2){animation-delay:.2s}.dots i:nth-child(3){animation-delay:.4s}
+@keyframes b{50%{opacity:1}}
+form{display:flex;flex-direction:column;gap:10px;margin-top:22px}
+input{width:100%;font:inherit;font-size:16px;color:var(--cream);background:rgba(246,240,230,.06);border:1px solid var(--line);border-radius:12px;padding:13px 14px;text-align:center}
+input:focus{outline:2px solid var(--gold);outline-offset:1px}
+.btn{display:block;width:100%;border:0;border-radius:999px;padding:14px 18px;font:600 15px/1.2 "Golos Text",sans-serif;cursor:pointer;text-decoration:none;text-align:center}
+.gold{background:var(--gold);color:#22140C}
+.tg{background:#229ED9;color:#fff;margin-top:12px}
+.ghost{background:transparent;color:var(--cream);border:1px solid var(--line);margin-top:12px}
+.err{color:#E8A598;font-size:14px;min-height:1.2em}
+.home{display:inline-block;margin-top:22px;color:var(--soft);font-size:13px}
+</style>
+</head>
+<body>
+<main class="card">
+  <div class="lbl">Курс Анастасії</div>
+  <h1>Знову з силами</h1>
+
+  <section class="st on" id="s-load"><p>Відкриваю ваш курс…</p><div class="dots"><i></i><i></i><i></i></div></section>
+
+  <section class="st" id="s-need">
+    <p>Курс відкривається за вашим особистим посиланням, яке ви отримали після оплати. Відкрийте його ще раз або вставте ключ сюди.</p>
+    <form id="f"><input id="k" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="Ключ або посилання"><div class="err" id="e"></div><button class="btn gold">Відкрити курс</button></form>
+    <a class="btn tg" href="https://t.me/ksenia_anastasiia_bot?start=buy_4">Ще не купили? Написати Ксенії</a>
+  </section>
+
+  <section class="st" id="s-limit">
+    <p>Цей ключ уже відкрили на трьох пристроях. Щоб додати новий телефон чи ноутбук, напишіть Ксенії, і Анастасія допоможе.</p>
+    <a class="btn tg" href="https://t.me/ksenia_anastasiia_bot">Написати Ксенії</a>
+  </section>
+
+  <section class="st" id="s-nokey">
+    <p>Цей ключ не підходить до курсу або вимкнений. Перевірте посилання з повідомлення Ксенії або напишіть їй.</p>
+    <a class="btn tg" href="https://t.me/ksenia_anastasiia_bot">Написати Ксенії</a>
+    <button class="btn ghost" type="button" id="again">Ввести інший ключ</button>
+  </section>
+
+  <section class="st" id="s-net">
+    <p>Не вдалося відкрити курс. Перевірте інтернет і спробуйте ще раз.</p>
+    <button class="btn gold" type="button" id="retry" style="margin-top:22px">Спробувати ще раз</button>
+  </section>
+
+  <a class="home" href="/">← Усі курси</a>
+</main>
+<script>
+(function(){
+  var SLUG = "syly", API = "https://n8n.anastasiiamindbody.com/webhook/course-access";
+  var KEY = "am-key-" + SLUG, CK = "am-ck-" + SLUG;
+  function ls(k, v){ try{ if(v === undefined) return localStorage.getItem(k); if(v === null) localStorage.removeItem(k); else localStorage.setItem(k, v); }catch(e){ return null; } }
+  function show(id){ var s = document.querySelectorAll(".st"); for(var i=0;i<s.length;i++) s[i].classList.toggle("on", s[i].id === "s-" + id); }
+  function bytes(b64){ var s = atob(b64), a = new Uint8Array(s.length); for(var i=0;i<s.length;i++) a[i] = s.charCodeAt(i); return a; }
+  function pick(v){ var m = String(v || "").match(/(?:k=)?([A-Za-z0-9_-]{16,64})\s*$/); return m ? m[1] : ""; }
+
+  var dev = ls("am-device");
+  if(!dev){ dev = Array.prototype.map.call(crypto.getRandomValues(new Uint8Array(16)), function(b){ return ("0" + b.toString(16)).slice(-2); }).join(""); ls("am-device", dev); }
+  var hm = location.hash.match(/k=([A-Za-z0-9_-]{16,64})/);
+  if(hm){ ls(KEY, hm[1]); history.replaceState(null, "", location.pathname); }
+
+  async function start(){
+    var k = ls(KEY);
+    if(!k){ show("need"); return; }
+    show("load");
+    var ck = null, reason = null;
+    try{
+      var r = await fetch(API, { method: "POST", headers: { "Content-Type": "text/plain" }, body: JSON.stringify({ k: k, c: SLUG, d: dev }) });
+      var j = await r.json();
+      if(j && j.ok && j.key){ ck = j.key; ls(CK, ck); } else reason = (j && j.reason) || "nokey";
+    }catch(e){ ck = ls(CK); if(!ck) reason = "net"; }
+    if(reason){
+      if(reason !== "net"){ ls(CK, null); if(reason !== "limit") ls(KEY, null); }
+      show(reason === "limit" ? "limit" : reason === "net" ? "net" : "nokey");
+      return;
+    }
+    try{ await openCourse(ck); }catch(e){ ls(CK, null); show("net"); }
+  }
+
+  async function openCourse(ckb64){
+    var res = await fetch("c.bin", { cache: "no-cache" });
+    if(!res.ok) throw new Error("bin");
+    var buf = await res.arrayBuffer();
+    var key = await crypto.subtle.importKey("raw", bytes(ckb64), "AES-GCM", false, ["decrypt"]);
+    var plain = await crypto.subtle.decrypt({ name: "AES-GCM", iv: buf.slice(0, 12) }, key, buf.slice(12));
+    var data = JSON.parse(new TextDecoder().decode(plain));
+    var names = Object.keys(data.assets).sort(function(a, b){ return b.length - a.length; });
+    var map = {};
+    function rep(s){
+      names.forEach(function(n){
+        if(!map[n]) return;
+        [n, encodeURI(n), encodeURIComponent(n)].filter(function(v, i, a){ return a.indexOf(v) === i; })
+          .forEach(function(v){ s = s.split(v).join(map[n]); });
+      });
+      return s;
+    }
+    names.forEach(function(n){ var a = data.assets[n]; if(a.t !== "text/html") map[n] = URL.createObjectURL(new Blob([bytes(a.b)], { type: a.t })); });
+    names.forEach(function(n){ var a = data.assets[n]; if(a.t === "text/html") map[n] = URL.createObjectURL(new Blob([rep(new TextDecoder().decode(bytes(a.b)))], { type: "text/html;charset=utf-8" })); });
+    var orig = window.fetch.bind(window);
+    window.fetch = function(u, o){
+      if(typeof u === "string"){ try{ var n = decodeURIComponent(u.split(/[?#]/)[0].split("/").pop()); if(map[n]) return orig(map[n], o); }catch(e){} }
+      return orig(u, o);
+    };
+    var html = rep(data.main);
+    document.open(); document.write(html); document.close();
+  }
+
+  document.getElementById("f").addEventListener("submit", function(ev){
+    ev.preventDefault();
+    var k = pick(document.getElementById("k").value);
+    if(!k){ document.getElementById("e").textContent = "Схоже, це не ключ. Скопіюйте посилання з повідомлення Ксенії."; return; }
+    ls(KEY, k); start();
+  });
+  document.getElementById("again").addEventListener("click", function(){ show("need"); });
+  document.getElementById("retry").addEventListener("click", start);
+  start();
+})();
+</script>
+</body>
+</html>
