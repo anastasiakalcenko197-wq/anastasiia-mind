@@ -56,6 +56,11 @@ input:focus{outline:2px solid var(--gold);outline-offset:1px}
     <button class="btn ghost" type="button" id="again">Ввести інший ключ</button>
   </section>
 
+  <section class="st" id="s-expired">
+    <p>Рік доступу до цього курсу вже минув. Дякуємо, що були з нами! Щоб продовжити доступ, напишіть Ксенії.</p>
+    <a class="btn tg" href="https://t.me/ksenia_anastasiia_bot">Написати Ксенії</a>
+  </section>
+
   <section class="st" id="s-net">
     <p>Не вдалося відкрити курс. Перевірте інтернет і спробуйте ще раз.</p>
     <button class="btn gold" type="button" id="retry" style="margin-top:22px">Спробувати ще раз</button>
@@ -88,8 +93,8 @@ input:focus{outline:2px solid var(--gold);outline-offset:1px}
       if(j && j.ok && j.key){ ck = j.key; ls(CK, ck); } else reason = (j && j.reason) || "nokey";
     }catch(e){ ck = ls(CK); if(!ck) reason = "net"; }
     if(reason){
-      if(reason !== "net"){ ls(CK, null); if(reason !== "limit") ls(KEY, null); }
-      show(reason === "limit" ? "limit" : reason === "net" ? "net" : "nokey");
+      if(reason !== "net"){ ls(CK, null); if(reason !== "limit" && reason !== "expired") ls(KEY, null); }
+      show(reason === "limit" || reason === "expired" || reason === "net" ? reason : "nokey");
       return;
     }
     try{ await openCourse(ck); }catch(e){ ls(CK, null); show("net"); }
