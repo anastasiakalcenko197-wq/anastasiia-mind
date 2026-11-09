@@ -30,6 +30,16 @@ input:focus{outline:2px solid var(--gold);outline-offset:1px}
 .ghost{background:transparent;color:var(--cream);border:1px solid var(--line);margin-top:12px}
 .err{color:#E8A598;font-size:14px;min-height:1.2em}
 .home{display:inline-block;margin-top:22px;color:var(--soft);font-size:13px}
+
+/* preview polish: the card arrives softly, buttons answer the pointer, focus is visible */
+.card{animation:arrive 1s cubic-bezier(.16,1,.3,1) both}
+.card h1{animation:arrive 1.1s cubic-bezier(.16,1,.3,1) .12s both}
+@keyframes arrive{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+.btn{transition:transform .3s cubic-bezier(.16,1,.3,1),box-shadow .3s,filter .3s}
+@media (hover:hover){.btn:hover{transform:translateY(-2px);filter:brightness(1.05)}}
+.btn:active{transform:translateY(0) scale(.98)}
+.btn:focus-visible,.home:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+@media (prefers-reduced-motion:reduce){.card,.card h1{animation:none}.btn{transition:none}}
 </style>
 </head>
 <body>
