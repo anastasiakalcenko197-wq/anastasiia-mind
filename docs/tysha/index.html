@@ -602,7 +602,7 @@ window.FX={vanta:(innerWidth>=900&&!(navigator.connection&&navigator.connection.
 (function(){
   var C=window.FX||{};var still=window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches;
   function load(src){return new Promise(function(ok,no){var s=document.createElement("script");s.src=src;s.onload=ok;s.onerror=no;document.head.appendChild(s)})}
-  var CDN="https://cdnjs.cloudflare.com/ajax/libs/";
+  var CDN="/vendor/";
   /* ---------- GSAP reveals ---------- */
   function reveals(){
     if(!window.gsap||still)return;
@@ -636,7 +636,7 @@ window.FX={vanta:(innerWidth>=900&&!(navigator.connection&&navigator.connection.
     }).catch(function(){layer.remove()});
   }
   function start(){
-    load("https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js").then(reveals).catch(function(){});
+    load("/vendor/gsap/3.12.5/gsap.min.js").then(reveals).catch(function(){});
     vanta();
   }
   if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",start);else start();
