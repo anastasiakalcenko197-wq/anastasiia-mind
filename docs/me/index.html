@@ -618,6 +618,7 @@ footer .sos a:first-child{background:var(--goldl);color:var(--esp);border-color:
 .str-list{max-width:900px}
 
 html[data-theme="dark"] .cover .ph::before{background:linear-gradient(rgba(20,13,10,.88),rgba(20,13,10,0));height:170px}
+html[data-theme="dark"] .docs-grid button{background:var(--paper2);border-color:var(--line);color:var(--ink)}html[data-theme="dark"] .docs-grid button span{color:var(--ink2)}
 /* ===== dark theme (default) ===== */
 html[data-theme="dark"]{--paper:#1A120E;--paper2:#22180F;--ink:#F1E9DC;--ink2:#C9BBA8;--line:rgba(241,233,220,.14);--wine:#D08A95;--wine2:#B9707C;--esp:#0F0A08;--esp2:#17100C;color-scheme:dark}
 html[data-theme="dark"] body{background:var(--paper);color:var(--ink)}
@@ -737,7 +738,7 @@ html:not([data-theme="dark"]) .thm .sun{display:none}
       <div class="rec rv"><b>Освіту <em>підтверджено</em> в&nbsp;Норвегії</b><span>І психологічну освіту, і кваліфікацію тренерки — у Норвегії, де я живу і працюю.</span></div>
 
       <div class="docs" id="docs" hidden>
-        <h3>Документи</h3>
+        <h3>Сертифікати</h3>
         <div class="docs-grid" id="docsGrid"></div>
       </div>
     </div>
@@ -908,7 +909,7 @@ html:not([data-theme="dark"]) .thm .sun{display:none}
 /* ДОКУМЕНТИ: додайте сюди фото дипломів і сертифікатів (2–6 шт.), напр.
    {src:"me/diploma-ksu.jpg", title:"Диплом психолога, ХДУ"}
    Поки масив порожній, блок «Документи» не показується. */
-var DIPLOMAS=[];
+var DIPLOMAS=[{src:"docs/sumdpu-kryza.jpg",title:"Особистість у кризових умовах · СумДПУ, 2024"},{src:"docs/hdu-konferentsiia.jpg",title:"Психологічні технології розвитку особистості · ХДУ, 2024"},{src:"docs/prometheus-stres.jpg",title:"Психологія стресу · Університет Грінченка, 2024"}];
 </script>
 <script>
 (function(){
