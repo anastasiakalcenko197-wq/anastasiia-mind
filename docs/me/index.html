@@ -539,20 +539,52 @@ footer .sos a:first-child{background:var(--goldl);color:var(--esp);border-color:
 .rec b{font:500 clamp(30px,6vw,44px)/1.05 var(--serif)}
 .rec b em{color:var(--goldl)}
 .rec span{color:var(--cream2)}
-.docs{margin-top:56px}
+.docs{margin-top:88px}
 .docs[hidden]{display:none}
-.docs h3{font:italic 400 22px/1.2 var(--serif);color:var(--ink2);padding-bottom:12px;border-bottom:1px solid var(--ink)}
-.docs-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:20px}
-.docs-grid button{all:unset;box-sizing:border-box;cursor:pointer;display:block;background:#FBF7F1;border:1px solid var(--line);padding:10px;min-height:44px;transition:border-color .3s}
-.docs-grid button:hover{border-color:var(--wine)}
-.docs-grid button:focus-visible{outline:2px solid var(--wine);outline-offset:2px}
-.docs-grid img{width:100%;aspect-ratio:3/4;object-fit:cover;background:var(--paper2)}
-.docs-grid span{display:block;font-size:16px;line-height:1.35;margin-top:8px;color:var(--ink2)}
-.lb{position:fixed;inset:0;z-index:80;background:rgba(20,14,11,.94);display:none;align-items:center;justify-content:center;padding:64px 16px 24px}
-.lb.on{display:flex}
-.lb img{max-width:100%;max-height:100%;object-fit:contain;box-shadow:0 20px 60px rgba(0,0,0,.5)}
-.lb .x{position:absolute;top:12px;right:12px;color:var(--cream);border-color:rgba(241,233,220,.35)}
-.lb p{position:absolute;left:16px;right:90px;top:18px;color:var(--cream2);font:italic 400 19px/1.3 var(--serif);margin:0}
+.docs-h{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:8px 24px;padding-bottom:16px;border-bottom:1px solid var(--line)}
+.docs-h h3{font:400 clamp(34px,6vw,56px)/1 var(--serif);color:var(--ink)}
+.docs-h p{font:500 12px/1.4 var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--gold)}
+.docs-feat,.docs-sub{display:grid;gap:14px;margin-top:22px}
+.docs-sub{grid-template-columns:repeat(auto-fill,minmax(min(100%,260px),1fr))}
+.dc{all:unset;box-sizing:border-box;cursor:pointer;position:relative;display:grid;align-content:start;gap:14px;padding:12px 12px 18px;background:var(--paper2);border:1px solid var(--line);transition:border-color .4s,transform .6s cubic-bezier(.16,1,.3,1);-webkit-tap-highlight-color:transparent}
+.dc-mat{position:relative;display:block;aspect-ratio:4/3;padding:clamp(12px,3vw,22px);background:radial-gradient(120% 90% at 50% 40%,#EFE6D8,#E2D6C4);overflow:hidden}
+.dc-mat::after{content:"";position:absolute;inset:7px;border:1px solid rgba(162,127,75,.35);pointer-events:none}
+.dc-mat img{display:block;width:100%;height:100%;object-fit:contain;filter:drop-shadow(0 10px 22px rgba(30,18,10,.28));transition:transform .9s cubic-bezier(.16,1,.3,1),opacity .6s ease}
+.dc-mat img.wait{opacity:0}
+.dc-txt{display:grid;gap:6px;padding:0 6px;padding-right:44px}
+.dc-k{font:500 12px/1.4 var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--gold)}
+.dc b{font:400 clamp(21px,2.4vw,26px)/1.15 var(--serif);color:var(--ink)}
+.dc-m{font-size:15px;line-height:1.4;color:var(--ink2)}
+.dc-ic{position:absolute;right:16px;bottom:18px;width:36px;height:36px;border-radius:50%;border:1px solid var(--line);display:grid;place-items:center;color:var(--ink2);transition:background .4s,color .4s,border-color .4s}
+.dc-ic svg{width:15px;height:15px}
+.dc:focus-visible{outline:2px solid var(--wine);outline-offset:3px}
+@media (hover:hover){.dc:hover{border-color:var(--gold);transform:translateY(-4px)}.dc:hover .dc-mat img{transform:scale(1.035)}.dc:hover .dc-ic{background:var(--goldl);border-color:var(--goldl);color:var(--esp)}}
+.dc-f .dc-k::before{content:"";display:inline-block;width:18px;height:1px;background:var(--gold);vertical-align:middle;margin-right:10px}
+@media (min-width:760px){.docs-feat,.docs-sub{grid-template-columns:repeat(3,minmax(0,1fr))}.docs-feat .dc-mat{aspect-ratio:1/.96}}
+@media (max-width:759px){.docs-sub .dc{grid-template-columns:44% 1fr;align-items:center;gap:14px;padding:10px}.docs-sub .dc-mat{padding:8px}.docs-sub .dc-mat::after{inset:4px}.docs-sub .dc-txt{padding:0;gap:4px}.docs-sub .dc b{font-size:19px}.docs-sub .dc-m{font-size:14px}.docs-sub .dc-ic{display:none}}
+html[data-theme="dark"] .dc-mat{background:radial-gradient(120% 90% at 50% 35%,#2B2019,#130D0A)}
+html[data-theme="dark"] .dc-mat::after{border-color:rgba(207,174,126,.22)}
+html[data-theme="dark"] .dc-mat img{filter:drop-shadow(0 14px 28px rgba(0,0,0,.6))}
+.lb{position:fixed;inset:0;z-index:80;background:#0E0907;display:none;flex-direction:column;align-items:stretch;padding:0;touch-action:pan-y}
+.lb.on{display:flex;animation:lbIn .35s ease}
+@keyframes lbIn{from{opacity:0}to{opacity:1}}
+.lb-top{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 12px 8px 20px;color:var(--cream2)}
+.lb-n{font:500 13px/1 var(--sans);letter-spacing:.14em;color:var(--goldl)}
+.lb .x{color:var(--cream);border-color:rgba(241,233,220,.35)}
+.lb-stage{flex:1;min-height:0;position:relative;display:flex;align-items:center;justify-content:center;padding:8px 16px}
+.lb img{max-width:100%;max-height:100%;object-fit:contain;box-shadow:0 24px 70px rgba(0,0,0,.6);transition:opacity .3s ease,transform .4s cubic-bezier(.16,1,.3,1)}
+.lb img.sw{opacity:0;transform:scale(.97)}
+.lb-cap{padding:14px 20px calc(18px + env(safe-area-inset-bottom));text-align:center;color:var(--cream)}
+.lb-cap b{display:block;font:400 clamp(22px,4vw,30px)/1.15 var(--serif)}
+.lb-cap span{display:block;margin-top:6px;font-size:15px;color:var(--cream2)}
+.lb-nav{position:absolute;top:50%;transform:translateY(-50%);width:48px;height:48px;border-radius:50%;border:1px solid rgba(241,233,220,.3);background:rgba(20,13,10,.6);color:var(--cream);display:grid;place-items:center;cursor:pointer;transition:background .3s}
+.lb-nav:hover{background:rgba(207,174,126,.25)}
+.lb-nav svg{width:18px;height:18px}
+.lb-prev{left:12px}.lb-next{right:12px}
+@media (max-width:640px){.lb-nav{top:auto;bottom:8px;transform:none;width:44px;height:44px}.lb-stage{padding-bottom:64px}.lb-cap{padding-top:6px}}
+/* failsafe: images always visible if not loaded state-tracked */
+.ph img{transition:opacity .6s ease}
+.ph img.wait{opacity:0}
 
 /* things built */
 .built{padding:96px 0 40px}
@@ -737,10 +769,13 @@ html:not([data-theme="dark"]) .thm .sun{display:none}
       </ol>
       <div class="rec rv"><b>Освіту <em>визнано</em> в&nbsp;Норвегії</b><span>Директорат вищої освіти Норвегії (HK-dir) у 2025 році визнав обидва мої дипломи — з психології та з фізичного виховання і спорту — рівними норвезькому бакалавру.</span></div>
 
-      <div class="docs" id="docs" hidden>
-        <h3>Документи</h3>
-        <div class="docs-grid" id="docsGrid"></div>
-      </div>
+    </div>
+  </div>
+  <div class="wrap">
+    <div class="docs" id="docs" hidden>
+      <div class="docs-h rv"><h3>Документи</h3><p id="docsN">Натисніть, щоб роздивитися</p></div>
+      <div class="docs-feat" id="docsFeat"></div>
+      <div class="docs-sub" id="docsSub"></div>
     </div>
   </div>
 </section>
@@ -903,13 +938,19 @@ html:not([data-theme="dark"]) .thm .sun{display:none}
   </div>
 </footer>
 
-<div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Документ"><p id="lbCap"></p><button class="x" type="button" id="lbX">Закрити <span aria-hidden="true">✕</span></button><img id="lbImg" alt=""></div>
+<div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Документ"><div class="lb-top"><span class="lb-n" id="lbN"></span><button class="x" type="button" id="lbX">Закрити <span aria-hidden="true">✕</span></button></div><div class="lb-stage" id="lbStage"><img id="lbImg" alt=""><button class="lb-nav lb-prev" type="button" id="lbP" aria-label="Попередній документ"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M15 5l-7 7 7 7"/></svg></button><button class="lb-nav lb-next" type="button" id="lbNx" aria-label="Наступний документ"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M9 5l7 7-7 7"/></svg></button></div><div class="lb-cap" id="lbCap"></div></div>
 
 <script>
 /* ДОКУМЕНТИ: додайте сюди фото дипломів і сертифікатів (2–6 шт.), напр.
    {src:"me/diploma-ksu.jpg", title:"Диплом психолога, ХДУ"}
    Поки масив порожній, блок «Документи» не показується. */
-var DIPLOMAS=[{src:"docs/dyplom-psykholohiia.jpg",title:"Диплом бакалавра психології · ХДУ, 2024"},{src:"docs/dyplom-trener.jpg",title:"Диплом бакалавра: фізична культура і спорт, тренер-викладач · ХДУ, 2023"},{src:"docs/hkdir-godkjenning.jpg",title:"Визнання освіти в Норвегії · HK-dir, 2025"},{src:"docs/sumdpu-kryza.jpg",title:"Особистість у кризових умовах · СумДПУ, 2024"},{src:"docs/hdu-konferentsiia.jpg",title:"Психологічні технології розвитку особистості · ХДУ, 2024"},{src:"docs/prometheus-stres.jpg",title:"Психологія стресу · Університет Грінченка, 2024"}];
+var DIPLOMAS=[
+{src:"docs/dyplom-psykholohiia.jpg",k:"Диплом бакалавра",t:"Психологія",m:"Херсонський державний університет · 2024",f:1},
+{src:"docs/dyplom-trener.jpg",k:"Диплом бакалавра",t:"Фізичне виховання і спорт",m:"ХДУ · тренер-викладач · 2023",f:1},
+{src:"docs/hkdir-godkjenning.jpg",k:"Визнання в Норвегії",t:"Рішення HK-dir",m:"Директорат вищої освіти Норвегії · 2025",f:1},
+{src:"docs/sumdpu-kryza.jpg",k:"Сертифікат",t:"Особистість у кризових умовах",m:"СумДПУ · 2024"},
+{src:"docs/hdu-konferentsiia.jpg",k:"Сертифікат",t:"Психологічні технології розвитку особистості",m:"ХДУ · 2024"},
+{src:"docs/prometheus-stres.jpg",k:"Сертифікат",t:"Психологія стресу",m:"Університет Грінченка · 2024"}];
 </script>
 <script>
 (function(){
@@ -923,13 +964,36 @@ var top=$("#top");function hdr(){top.classList.toggle("solid",scrollY>30)}addEve
 
 /* documents + lightbox */
 var D=window.DIPLOMAS||[];
-if(D.length){var g=$("#docsGrid");$("#docs").hidden=false;
-  g.innerHTML=D.map(function(d,i){return '<button type="button" data-i="'+i+'"><img src="'+esc(d.src)+'" alt="'+esc(d.title||"Документ")+'" loading="lazy"><span>'+esc(d.title||"")+'</span></button>'}).join("");
-  var lb=$("#lb"),last=null;
-  g.addEventListener("click",function(e){var b=e.target.closest("button");if(!b)return;var d=D[+b.dataset.i];last=b;$("#lbImg").src=d.src;$("#lbImg").alt=d.title||"Документ";$("#lbCap").textContent=d.title||"";lb.classList.add("on");document.body.style.overflow="hidden";$("#lbX").focus()});
+var ARW='<span class="dc-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M7 17L17 7M9 7h8v8"/></svg></span>';
+function card(d,i){return '<button type="button" class="dc'+(d.f?' dc-f rv':' rv')+'" data-i="'+i+'" aria-label="Переглянути: '+esc(d.k+' — '+d.t)+'"><span class="dc-mat"><img src="'+esc(d.src)+'" alt="" loading="lazy" decoding="async"></span><span class="dc-txt"><span class="dc-k">'+esc(d.k)+'</span><b>'+esc(d.t)+'</b><span class="dc-m">'+esc(d.m||"")+'</span></span>'+ARW+'</button>'}
+if(D.length){$("#docs").hidden=false;
+  $("#docsFeat").innerHTML=D.map(function(d,i){return d.f?card(d,i):""}).join("");
+  $("#docsSub").innerHTML=D.map(function(d,i){return d.f?"":card(d,i)}).join("");
+  $("#docsN").textContent=D.length+" документів · натисніть, щоб роздивитися";
+  var lb=$("#lb"),im=$("#lbImg"),cur=0,last=null,tm=0;
+  function show(i,anim){cur=(i+D.length)%D.length;var d=D[cur];
+    function put(){im.src=d.src;im.alt=d.k+" — "+d.t;$("#lbCap").innerHTML="<b>"+esc(d.t)+"</b><span>"+esc(d.k+" · "+(d.m||""))+"</span>";$("#lbN").textContent=(cur+1)+" / "+D.length;im.classList.remove("sw")}
+    clearTimeout(tm);if(anim&&!still){im.classList.add("sw");tm=setTimeout(put,180)}else put();
+    var n=new Image();n.src=D[(cur+1)%D.length].src}
+  function open(i,b){last=b;show(i,false);lb.classList.add("on");document.body.style.overflow="hidden";$("#lbX").focus()}
   function close(){lb.classList.remove("on");document.body.style.overflow="";if(last)last.focus()}
-  $("#lbX").onclick=close;lb.addEventListener("click",function(e){if(e.target===lb)close()});addEventListener("keydown",function(e){if(e.key==="Escape"&&lb.classList.contains("on"))close()});
+  $("#docs").addEventListener("click",function(e){var b=e.target.closest(".dc");if(b)open(+b.dataset.i,b)});
+  $("#lbX").onclick=close;$("#lbP").onclick=function(){show(cur-1,true)};$("#lbNx").onclick=function(){show(cur+1,true)};
+  lb.addEventListener("click",function(e){if(e.target===lb||e.target.id==="lbStage")close()});
+  addEventListener("keydown",function(e){if(!lb.classList.contains("on"))return;if(e.key==="Escape")close();else if(e.key==="ArrowRight")show(cur+1,true);else if(e.key==="ArrowLeft")show(cur-1,true)});
+  var sx=0,sy=0;lb.addEventListener("touchstart",function(e){sx=e.touches[0].clientX;sy=e.touches[0].clientY},{passive:true});
+  lb.addEventListener("touchend",function(e){var dx=e.changedTouches[0].clientX-sx,dy=e.changedTouches[0].clientY-sy;if(Math.abs(dx)>50&&Math.abs(dx)>Math.abs(dy)*1.3)show(cur+(dx<0?1:-1),true)},{passive:true});
 }
+
+/* photos: fade in on load, never stay hidden */
+$$(".ph img,.dc-mat img").forEach(function(img){
+  if(img.complete&&img.naturalWidth)return;
+  img.classList.add("wait");
+  function ok(){img.classList.remove("wait")}
+  img.addEventListener("load",ok);img.addEventListener("error",ok);setTimeout(ok,6000);
+});
+/* after the page has loaded, fetch the rest of the photos quietly so fast scrolling never shows empty frames */
+addEventListener("load",function(){var f=function(){$$('img[loading="lazy"]').forEach(function(i){i.loading="eager"})};("requestIdleCallback" in window)?requestIdleCallback(f,{timeout:2500}):setTimeout(f,1500)});
 
 /* training video: load near view, play while visible */
 var vids=$$("video[data-src]");
@@ -940,19 +1004,35 @@ if("IntersectionObserver" in window){
 }
 
 function reveal(){if(still||!("IntersectionObserver" in window))return;
+  var pend=[];
+  function fire(el){var i=pend.indexOf(el);if(i<0)return;pend.splice(i,1);
+    var img=el.classList.contains("clip")?el.querySelector("img"):null;
+    if(img&&!(img.complete&&img.naturalWidth)){var done=false,go2=function(){if(done)return;done=true;el.classList.add("in")};img.loading="eager";img.addEventListener("load",go2);img.addEventListener("error",go2);setTimeout(go2,900)}
+    else el.classList.add("in")}
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){io.unobserve(e.target);fire(e.target)}})},{threshold:0,rootMargin:"0px 0px 8% 0px"});
+  pend=$$(".rv,.ph.clip");
   document.documentElement.classList.add("mo");
-  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(!e.isIntersecting)return;io.unobserve(e.target);var t=e.target.classList.contains("rv")?e.target:e.target.querySelector(".ph.clip");if(t)t.classList.add("in")})},{threshold:.08,rootMargin:"0px 0px -5% 0px"});
-  $$(".rv").forEach(function(el){io.observe(el)});
-  $$(".ph.clip").forEach(function(el){io.observe(el.parentNode)});
+  pend.slice().forEach(function(el){io.observe(el)});
+  /* safety sweep: anything already in or above the viewport is shown, even after jumps or fast flicks */
+  var tick=0;function sweep(){tick=0;var h=innerHeight*1.02;pend.slice().forEach(function(el){if(el.getBoundingClientRect().top<h){io.unobserve(el);fire(el)}});if(!pend.length){removeEventListener("scroll",ask);clearInterval(iv)}}
+  function ask(){if(!tick)tick=requestAnimationFrame(sweep)}
+  addEventListener("scroll",ask,{passive:true});addEventListener("resize",ask);addEventListener("hashchange",function(){setTimeout(sweep,60)});
+  addEventListener("pageshow",sweep);document.addEventListener("visibilitychange",function(){if(!document.hidden)sweep()});
+  var iv=setInterval(sweep,1200);sweep();
 }
-reveal();
-function go(){if(still||!window.gsap)return;
-  gsap.from(".cover h1 .ln>span",{yPercent:105,duration:1.4,stagger:.1,ease:"power4.out",delay:.1});
-  gsap.from(".cover .who,.cover-more",{y:20,opacity:0,duration:1.1,stagger:.12,delay:.45,ease:"power3.out",clearProps:"all"});
-  gsap.from(".cover .fig .ph",{clipPath:"inset(0 0 100% 0)",duration:1.6,ease:"power4.inOut",delay:.05,clearProps:"clipPath"});
-  gsap.from(".cover .fig img",{scale:1.12,duration:2.4,ease:"power3.out",delay:.05,clearProps:"transform"});
+try{reveal()}catch(err){document.documentElement.classList.remove("mo")}
+function go(){if(still||!window.gsap||performance.now()>3500||scrollY>innerHeight*.5)return;
+  try{
+  var tl=[
+  gsap.from(".cover h1 .ln>span",{yPercent:105,duration:1.4,stagger:.1,ease:"power4.out",delay:.1,clearProps:"transform"}),
+  gsap.from(".cover .who,.cover-more",{y:20,opacity:0,duration:1.1,stagger:.12,delay:.45,ease:"power3.out",clearProps:"all"}),
+  gsap.from(".cover .fig .ph",{clipPath:"inset(0 0 100% 0)",duration:1.6,ease:"power4.inOut",delay:.05,clearProps:"clipPath"}),
+  gsap.from(".cover .fig img",{scale:1.12,duration:2.4,ease:"power3.out",delay:.05,clearProps:"transform"})];
+  /* never leave the hero half-animated (background tab, slow device) */
+  setTimeout(function(){tl.forEach(function(t){if(t.progress()<1)t.progress(1)})},4500);
+  }catch(err){}
 }
-if(!still){var s=document.createElement("script");s.src="/vendor/gsap/3.12.5/gsap.min.js";s.onload=go;document.head.appendChild(s)}
+if(!still){var s=document.createElement("script");s.src="/vendor/gsap/3.12.5/gsap.min.js";s.onload=go;s.onerror=function(){};document.head.appendChild(s)}
 })();
 </script>
 </body>
