@@ -560,7 +560,9 @@ footer .sos a:first-child{background:var(--goldl);color:var(--esp);border-color:
 .dc:focus-visible{outline:2px solid var(--wine);outline-offset:3px}
 @media (hover:hover){.dc:hover{border-color:var(--gold);transform:translateY(-4px)}.dc:hover .dc-mat img{transform:scale(1.035)}.dc:hover .dc-ic{background:var(--goldl);border-color:var(--goldl);color:var(--esp)}}
 .dc-f .dc-k::before{content:"";display:inline-block;width:18px;height:1px;background:var(--gold);vertical-align:middle;margin-right:10px}
-@media (min-width:760px){.docs-feat,.docs-sub{grid-template-columns:repeat(3,minmax(0,1fr))}.docs-feat .dc-mat{aspect-ratio:1/.96}}
+@media (min-width:760px){.docs-feat{grid-template-columns:repeat(3,minmax(0,1fr))}.docs-sub{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (min-width:1100px){.docs-sub{grid-template-columns:repeat(4,minmax(0,1fr))}}
+@media (min-width:760px){.docs-feat .dc-mat{aspect-ratio:1/.96}}
 @media (max-width:759px){.docs-sub .dc{grid-template-columns:44% 1fr;align-items:center;gap:14px;padding:10px}.docs-sub .dc-mat{padding:8px}.docs-sub .dc-mat::after{inset:4px}.docs-sub .dc-txt{padding:0;gap:4px}.docs-sub .dc b{font-size:19px}.docs-sub .dc-m{font-size:14px}.docs-sub .dc-ic{display:none}}
 html[data-theme="dark"] .dc-mat{background:radial-gradient(120% 90% at 50% 35%,#2B2019,#130D0A)}
 html[data-theme="dark"] .dc-mat::after{border-color:rgba(207,174,126,.22)}
@@ -764,7 +766,7 @@ html:not([data-theme="dark"]) .thm .sun{display:none}
         <li class="now rv">
           <span class="k">Зараз <em class="badge">навчаюся</em></span>
           <h3>Професійна перепідготовка</h3>
-          <p>Школа «Експерт». Навчання триває.</p>
+          <p>Школа «Експерт Х», комплексна програма з психології «GLOBAL PRO MAX» — 1500 академічних годин: КПТ, гештальт-, тілесно-орієнтована й позитивна терапія, психосоматика, психотравма, сексологія, коучинг та інше. Довідка — у документах нижче.</p>
         </li>
       </ol>
       <div class="rec rv"><b>Освіту <em>визнано</em> в&nbsp;Норвегії</b><span>Директорат вищої освіти Норвегії (HK-dir) у 2025 році визнав обидва мої дипломи — з психології та з фізичного виховання і спорту — рівними норвезькому бакалавру.</span></div>
@@ -948,6 +950,7 @@ var DIPLOMAS=[
 {src:"docs/dyplom-psykholohiia.jpg",k:"Диплом бакалавра",t:"Психологія",m:"Херсонський державний університет · 2024",f:1},
 {src:"docs/dyplom-trener.jpg",k:"Диплом бакалавра",t:"Фізичне виховання і спорт",m:"ХДУ · тренер-викладач · 2023",f:1},
 {src:"docs/hkdir-godkjenning.jpg",k:"Визнання в Норвегії",t:"Рішення HK-dir",m:"Директорат вищої освіти Норвегії · 2025",f:1},
+{src:"docs/expert-dovidka.jpg",k:"Довідка про навчання",t:"Психологія · GLOBAL PRO MAX",m:"Школа «Експерт Х» · 1500 годин · навчаюся зараз"},
 {src:"docs/sumdpu-kryza.jpg",k:"Сертифікат",t:"Особистість у кризових умовах",m:"СумДПУ · 2024"},
 {src:"docs/hdu-konferentsiia.jpg",k:"Сертифікат",t:"Психологічні технології розвитку особистості",m:"ХДУ · 2024"},
 {src:"docs/prometheus-stres.jpg",k:"Сертифікат",t:"Психологія стресу",m:"Університет Грінченка · 2024"}];
